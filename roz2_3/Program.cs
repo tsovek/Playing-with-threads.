@@ -35,12 +35,12 @@ namespace roz2_3
             static ManualResetEvent resetEvent = new ManualResetEvent(false);
 
             Random r = new Random();
-            private List<int> _results;
-            public int[] Array { get; private set; }
+            List<int> _results = new List<int>();
+
+            int[] Array { get; set; }
 
             public MinMaxCalculate(int count)
             {
-                _results = new List<int>();
                 Array = new int[count];
                 FillArray();
             }
@@ -111,7 +111,7 @@ namespace roz2_3
                 {
                     int min = i * range;
                     max += range;
-                    Console.WriteLine("New thread is starting...");
+                    Console.WriteLine("New thread is starting... ");
                     ThreadPool.QueueUserWorkItem(w, new object[] { min, max });
                     Console.WriteLine("Thread finished...");
                 }
